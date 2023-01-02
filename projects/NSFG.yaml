@@ -1,0 +1,11 @@
+project_name: National Survey of Family Growth
+project_folder: NSFG
+homepage: https://www.cdc.gov/nchs/nsfg/index.htm
+
+base_url: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NSFG/
+
+collection:
+  - dataset:
+      name: 2017-2019 NSFG Female Response
+      SAS_import: sas/2015_2017_FemRespSetup.sas
+      fixed_width_data: 2015_2017_FemRespData.dat
