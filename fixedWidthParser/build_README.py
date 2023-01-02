@@ -21,7 +21,7 @@ for f_project in Path("projects/").glob("*.yaml"):
         name = dataset["name"]
         f_spec = Path(dataset["SAS_import"]).stem + ".yaml"
         f_spec = folder / "specification" / f_spec
-        line = f"+ {name} ([:notebook:]({f_spec}))"
+        line = f"+ {name} [:notebook:]({f_spec})"
         output.append(line)
 
 output = "\n".join(output) + "\n"
