@@ -37,7 +37,7 @@ class ProjectParser:
 
         Returns the name of the local file.
         """
-        f_save = self.working_folder / url
+        f_save = self.working_folder / "download" / url
 
         if not f_save.exists():
 
