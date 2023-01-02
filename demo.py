@@ -2,6 +2,8 @@ import yaml
 from pathlib import Path
 import requests
 import logging
+import pandas as pd
+from tqdm import tqdm
 from fixedWidthParser import parse_SAS_import
 
 logging.basicConfig(level=logging.DEBUG)
@@ -70,14 +72,46 @@ class ProjectParser:
 
         return f_save
 
+    def convert(self, f_spec, f_data):
+
+        with open(f_spec) as FIN:
+            spec = yaml.safe_load(FIN.read())
+
+        colspecs = []
+        for col in spec["columns"]:
+            row = spec["columns"][col]
+
+            # Adjust the counting from SAS -> Python (off by one)
+            colspecs.append((row["start"] - 1, row["end"]))
+
+        df = pd.read_fwf(
+            f_data,
+            colspecs=colspecs,
+            header=None,
+            names=spec["columns"],
+            dtype=object,  # Force reading everything as an object
+        )
+        return df, spec
+
     def parse(self, info):
 
-        print(info)
         if "SAS_import" in info:
             f_SAS = self.download(info["SAS_import"])
             f_spec = self.build_specification(f_SAS)
 
         f_data = self.download(info["fixed_width_data"])
+
+        df, spec = self.convert(f_spec, f_data)
+        print(df)
+
+        df.to_csv("example_raw.csv", index=False)
+
+        for col, row in tqdm(spec["columns"].items(), total=len(spec)):
+            if "mapping" not in row:
+                continue
+            df[col] = df[col].map(row["mapping"])
+
+        df.to_csv("example_parsed.csv", index=False)
 
 
 #########################################################################
