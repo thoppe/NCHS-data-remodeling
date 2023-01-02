@@ -190,9 +190,9 @@ def parse_SAS_import(raw_SAS: str):
                 columns[k].update(v)
 
     # Add extra columns if not present
-    for k in columns:
-        if "validation" not in columns[k]:
-            columns[k]["validation"] = {}
+    # for k in columns:
+    #    if "validation" not in columns[k]:
+    #        columns[k]["validation"] = {}
 
     # Apply the mapping
     for k in columns:

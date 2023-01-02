@@ -6,55 +6,70 @@ from fixedWidthParser import parse_SAS_import
 
 logging.basicConfig(level=logging.DEBUG)
 
-"""
 
-f_sas = "2017_2019_FemRespSetup.sas"
-
-with open(f_sas) as FIN:
-    raw = FIN.read()
-
-output_yaml = parse_SAS_import(raw)
-print(output_yaml)
-"""
+def mkdir(filename):
+    filename.parent.mkdir(exist_ok=True, parents=True)
 
 
-def mkdir(dest):
-    dest.mkdir(exist_ok=True, parents=True)
+def download(url, base_url="", working_folder=""):
+    """
+    Downloads and saves a file to the working directory. Optionally prepends
+    the base_url to the given url. Will skip if the file is already downloaded.
+
+    Returns the name of the local file.
+    """
+    f_save = working_folder / url
+
+    if not f_save.exists():
+
+        url = base_url + url
+        logging.info(f"Downloading {url}")
+
+        r = requests.get(url)
+        if not r.ok:
+            raise ValueError(f"Download of {url} failed with {r.status_code}")
+
+        # Create the working folder if it doesn't exist
+        mkdir(f_save)
+        with open(f_save, "wb") as FOUT:
+            FOUT.write(r.content)
+
+        logging.info(f"Downloaded {len(r.content)} bytes to {f_save}")
+
+    return f_save
 
 
-def download(url, f_save):
-    logging.info(f"Downloading {url}")
+def build_specification(f_SAS, working_folder=""):
+    f_save = working_folder / "specification" / (f_SAS.stem + ".yaml")
+    if not f_save.exists():
+        logging.info(f"Parsing {f_SAS}")
+        with open(f_SAS) as FIN:
+            raw = FIN.read()
+        output_yaml = parse_SAS_import(raw)
 
-    r = requests.get(url)
-    if not r.ok:
-        raise ValueError(f"Download of {url} failed with {r.status_code}")
+        mkdir(f_save)
+        with open(f_save, "w") as FOUT:
+            FOUT.write(output_yaml)
 
-    mkdir(f_save.parent)
-
-    with open(f_save, "wb") as FOUT:
-        FOUT.write(r.content)
-
-    logging.info(f"Downloaded {len(r.content)} bytes to {f_save}")
+    return f_save
 
 
 # Load the project information
 f_project = "projects/NSFG.yaml"
 with open(f_project) as FIN:
-    info = yaml.safe_load(FIN.read())
+    project_info = yaml.safe_load(FIN.read())
 
-working_folder = Path("projects") / info["project_folder"]
+working_folder = Path("projects") / project_info["project_folder"]
+base_url = project_info["base_url"]
 
-# Create the working folder if it doesn't exist
-# mkdir(working_folder)
+# Download files in each collection
 
-base_url = info["base_url"]
-print(info["collection"])
+for info in project_info["collection"]:
+    if "SAS_import" in info:
 
-for dataset in info["collection"]:
-    dset = dataset["dataset"]
+        f_SAS = download(info["SAS_import"], base_url, working_folder)
+        f_spec = build_specification(f_SAS, working_folder)
 
-    for key in ["fixed_width_data", "SAS_import"]:
-        if key in dset:
-            f_save = working_folder / "download" / dset[key]
-            if not f_save.exists():
-                download(base_url + dset[key], f_save)
+        print(f_spec)
+
+    exit()
