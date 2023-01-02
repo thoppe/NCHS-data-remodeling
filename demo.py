@@ -90,18 +90,3 @@ project = ProjectParser(f_project)
 
 for dataset in project:
     project.parse(dataset)
-exit()
-
-
-# Download files in each collection
-
-for info in project_info["collection"]:
-    if "SAS_import" in info:
-
-        f_SAS = download(info["SAS_import"], base_url, working_folder)
-        f_spec = build_specification(f_SAS, working_folder)
-        f_data = download(info["fixed_width_data"], base_url, working_folder)
-
-        print(f_spec)
-
-    exit()
