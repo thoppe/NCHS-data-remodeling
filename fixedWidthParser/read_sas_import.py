@@ -1,3 +1,4 @@
+from collections import OrderedDict
 from collections import defaultdict
 import re
 import yaml
@@ -156,43 +157,39 @@ def parse_PROC(section):
 
     return info
 
-
-from collections import OrderedDict
-
-columns = defaultdict(dict)
-
-for section in sections:
-    header = section.split("\n")[0].strip()
-    data = None
-
-    if "PROC FORMAT" in header:
-        proc_map = parse_PROC(section)
-    elif "STATEMENT" in header and "LABEL" in header:
-        data = parse_LABEL(section)
-    elif "STATEMENT" in header and "INPUT" in header:
-        data = parse_INPUT(section)
-    elif "STATEMENT" in header and "FORMAT" in header:
-        data = parse_FORMAT(section)
-    elif "STATEMENT" in header and "LENGTH" in header:
-        data = parse_LENGTH(section)
-    else:
-        raise KeyError(f"Unknown section {header}")
-
-    if data is not None:
-        for k, v in data.items():
-            columns[k].update(v)
-
-
 def parse_SAS_import(raw_SAS: str):
     
     # Look for major sections, demarcated by "* SAS "
     SAS_section_markers = "* SAS "
 
-    sections = raw.split(SAS_section_markers)
+    sections = raw_SAS.split(SAS_section_markers)
     
     # Remove first section before section marker
     sections = sections[1:]
+   
 
+    columns = defaultdict(dict)
+
+    for section in sections:
+        header = section.split("\n")[0].strip()
+        data = None
+
+        if "PROC FORMAT" in header:
+            proc_map = parse_PROC(section)
+        elif "STATEMENT" in header and "LABEL" in header:
+            data = parse_LABEL(section)
+        elif "STATEMENT" in header and "INPUT" in header:
+            data = parse_INPUT(section)
+        elif "STATEMENT" in header and "FORMAT" in header:
+            data = parse_FORMAT(section)
+        elif "STATEMENT" in header and "LENGTH" in header:
+            data = parse_LENGTH(section)
+        else:
+            raise KeyError(f"Unknown section {header}")
+
+        if data is not None:
+            for k, v in data.items():
+                columns[k].update(v)
 
     # Add extra columns if not present
     for k in columns:
