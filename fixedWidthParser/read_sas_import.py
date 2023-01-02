@@ -1,7 +1,7 @@
-from collections import OrderedDict
 from collections import defaultdict
 import re
 import yaml
+
 
 def extract_key_value_pair(line):
     tokens = line.split("=")
@@ -147,8 +147,6 @@ def parse_PROC(section):
     for block in re.findall(value_markers, section):
 
         variable_name = block[0].split()[1].strip()
-        assignments = block[1]
-
         info[variable_name] = {}
 
         for line in block[1].split("\n"):
@@ -157,16 +155,16 @@ def parse_PROC(section):
 
     return info
 
+
 def parse_SAS_import(raw_SAS: str):
-    
+
     # Look for major sections, demarcated by "* SAS "
     SAS_section_markers = "* SAS "
 
     sections = raw_SAS.split(SAS_section_markers)
-    
+
     # Remove first section before section marker
     sections = sections[1:]
-   
 
     columns = defaultdict(dict)
 
