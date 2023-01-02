@@ -17,3 +17,15 @@ collection:
     name: 2017-2019 NSFG Male Response
     SAS_import: sas/2017_2019_MaleSetup.sas
     fixed_width_data: 2017_2019_MaleData.dat
+  -
+    name: 2015-2017 NSFG Female Response
+    SAS_import: sas/2015_2017_FemRespSetup.sas
+    fixed_width_data: 2015_2017_FemRespData.dat
+  -
+    name: 2015-2017 NSFG Female Pregnant Response
+    SAS_import: sas/2015_2017_FemPregSetup.sas
+    fixed_width_data: 2015_2017_FemPregData.dat
+  -
+    name: 2015-2017 NSFG Male Response
+    SAS_import: sas/2015_2017_MaleSetup.sas
+    fixed_width_data: 2015_2017_MaleData.dat

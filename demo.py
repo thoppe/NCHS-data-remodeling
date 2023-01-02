@@ -59,16 +59,17 @@ class ProjectParser:
 
     def build_specification(self, f_SAS):
         f_save = self.working_folder / "specification" / (f_SAS.stem + ".yaml")
+
         if not f_save.exists():
             logging.info(f"Parsing {f_SAS}")
 
-        with open(f_SAS) as FIN:
-            raw = FIN.read()
-        output_yaml = parse_SAS_import(raw)
+            with open(f_SAS) as FIN:
+                raw = FIN.read()
+            output_yaml = parse_SAS_import(raw)
 
-        mkdir(f_save)
-        with open(f_save, "w") as FOUT:
-            FOUT.write(output_yaml)
+            mkdir(f_save)
+            with open(f_save, "w") as FOUT:
+                FOUT.write(output_yaml)
 
         return f_save
 
@@ -100,28 +101,42 @@ class ProjectParser:
             f_spec = self.build_specification(f_SAS)
 
         f_data = self.download(info["fixed_width_data"])
-        
-        '''
-        df, spec = self.convert(f_spec, f_data)
-        print(df)
 
-        df.to_csv("example_raw.csv", index=False)
+        f_save0 = self.working_folder / "csv" / (f_SAS.stem + ".csv.bz2")
+        f_save1 = self.working_folder / "csv_mapped" / (f_SAS.stem + ".csv.bz2")
 
-        for col, row in tqdm(spec["columns"].items(), total=len(spec)):
-            if "mapping" not in row:
-                continue
-            df[col] = df[col].map(row["mapping"])
+        if not f_save0.exists() or not f_save1.exists():
+            logging.info(f"Mapping columns in {f_save0.stem}")
+            mkdir(f_save0)
+            mkdir(f_save1)
 
-        df.to_csv("example_parsed.csv", index=False)
-        '''
+            df, spec = self.convert(f_spec, f_data)
+            df.to_csv(f_save0, index=False, compression="bz2")
+
+            for col, row in tqdm(spec["columns"].items(), total=len(spec)):
+                if "mapping" not in row:
+                    continue
+                df[col] = df[col].map(row["mapping"])
+            df.to_csv(f_save1, index=False, compression="bz2")
+
 
 #########################################################################
 
-
 # Load the project information
 f_project = "projects/NSFG.yaml"
-
 project = ProjectParser(f_project)
+
+# from dspipe import Pipe
+# Pipe(project)(project.parse, -1)
+
 
 for dataset in project:
     project.parse(dataset)
+exit()
+
+for dataset in project:
+    try:
+        project.parse(dataset)
+    except Exception as EX:
+        logging.error(f"Failed {dataset}")
+        print(EX)

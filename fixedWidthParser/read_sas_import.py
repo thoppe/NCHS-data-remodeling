@@ -9,6 +9,7 @@ def extract_key_value_pair(line):
     val = " ".join(tokens[1:])
 
     key = key.strip()
+
     val = val.replace("''", "'")
     val = val.strip().rstrip(";").strip().strip("'").strip('"')
 
@@ -92,7 +93,12 @@ def parse_INPUT(section):
     tokens = find_section(section, "INPUT")
     info = {}
 
+    # SAS uses $ to mark the type of a token, we can drop this
+    tokens = [x for x in tokens if x != "$"]
+
     for key, val in zip(tokens[::2], tokens[1::2]):
+        val = val.rstrip(".")
+
         val = val.split("-")
         if len(val) == 1:
             val = [val[0], val[0]]
@@ -141,12 +147,12 @@ def parse_PROC(section):
       7 = 'Not ascertained' ;
     """
 
-    value_markers = r"""(?sm)^ +(value \w+\n)(.*?);\r?$"""
+    value_markers = r"""(?sm)^ +(value \$\w+\n)(.*?);\r?$"""
     info = {}
 
     for block in re.findall(value_markers, section):
-
         variable_name = block[0].split()[1].strip()
+
         info[variable_name] = {}
 
         for line in block[1].split("\n"):
