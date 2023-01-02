@@ -1,0 +1,1760 @@
+columns:
+  CASEID:
+    start: 1
+    end: 5
+    description: Case identification number
+    SAS_length: 6
+  PREGORDR:
+    start: 6
+    end: 7
+    description: Pregnancy order (number)
+    SAS_format_mapping: PREGORDR
+    SAS_length: 3
+    mapping:
+      '1': 1ST PREGNANCY
+      '2': 2ND PREGNANCY
+      '3': 3RD PREGNANCY
+      '4': 4TH PREGNANCY
+      '5': 5TH PREGNANCY
+      '6': 6TH PREGNANCY
+      '7': 7TH PREGNANCY
+      '8': 8TH PREGNANCY
+      '9': 9TH PREGNANCY
+      '10': 10TH PREGNANCY
+      '11': 11TH PREGNANCY
+      '12': 12TH PREGNANCY
+      '13': 13TH PREGNANCY
+      '14': 14TH PREGNANCY
+      '15': 15TH PREGNANCY
+      '16': 16TH PREGNANCY
+      '17': 17TH PREGNANCY
+      '18': 18TH PREGNANCY
+      '19': 19TH PREGNANCY
+      '20': 20TH PREGNANCY
+  MOSCURRP:
+    start: 8
+    end: 8
+    description: Number of Months Currently Pregnant
+    SAS_format_mapping: MOSPRGF
+    SAS_length: 3
+    mapping:
+      '98': Refused
+      '99': Don't know
+  PREGEND1:
+    start: 9
+    end: 9
+    description: BC-1 How Pregnancy Ended - 1st mention
+    SAS_format_mapping: PREGENDF
+    SAS_length: 3
+    mapping: &id001
+      '1': Miscarriage
+      '2': Stillbirth
+      '3': Abortion
+      '4': Ectopic or tubal pregnancy
+      '5': Live birth by Cesarean section
+      '6': Live birth by vaginal delivery
+      '8': Refused
+      '9': Don't know
+  PREGEND2:
+    start: 10
+    end: 10
+    description: BC-1 How Pregnancy Ended - 2nd mention
+    SAS_format_mapping: PREGENDF
+    SAS_length: 3
+    mapping: *id001
+  HPAGEEND:
+    start: 11
+    end: 12
+    description: BC-4c Father's age (categorical) at pregnancy's end date
+    SAS_format_mapping: FATHAGEC
+    SAS_length: 3
+    mapping: &id002
+      '1': Under 20 years
+      '2': 20-24 years
+      '3': 25-29 years
+      '4': 30-34 years
+      '5': 35-39 years
+      '6': 40 years or older
+      '98': Refused
+      '99': Don't know
+  KIDAGE:
+    start: 13
+    end: 13
+    description: Current age (in years) of child(ren) from this pregnancy
+    SAS_format_mapping: KIDAGEC
+    SAS_length: 3
+    mapping:
+      '0': Less than 1 year
+      '1': 1 year old
+      '2': 2 years old
+      '3': 3 years old
+      '4': 4 years old
+      '5': 5 years old
+      '6': 6-11 years old
+      '7': 12-17 years old
+      '8': 18 years or older
+  HPAGELB:
+    start: 14
+    end: 15
+    description: BD-6 Father's age (categorical) at time of child(ren) s birth
+    SAS_format_mapping: FATHAGEC
+    SAS_length: 3
+    mapping: *id002
+  PAYBIRTH1:
+    start: 16
+    end: 16
+    description: BD-8 Payment for delivery - 1st mention
+    SAS_format_mapping: PAYBIRTHF
+    SAS_length: 3
+    mapping: &id003
+      '1': Insurance
+      '2': Co-payment or out-of-pocket payment
+      '3': Medicaid
+      '4': No payment required
+      '5': Some other way
+      '8': Refused
+      '9': Don't know
+  PAYBIRTH2:
+    start: 17
+    end: 17
+    description: BD-8 Payment for delivery - 2nd mention
+    SAS_format_mapping: PAYBIRTHF
+    SAS_length: 3
+    mapping: *id003
+  PAYBIRTH3:
+    start: 18
+    end: 18
+    description: BD-8 Payment for delivery - 3rd mention
+    SAS_format_mapping: PAYBIRTHF
+    SAS_length: 3
+    mapping: *id003
+  CSECPRIM:
+    start: 19
+    end: 19
+    description: BD-9 Is this R's first c-section?
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: &id005
+      '1': 'Yes'
+      '5': 'No'
+      '8': Refused
+      '9': Don't know
+  CSECMED1:
+    start: 20
+    end: 20
+    description: BD-10 Medical reasons reported for this C-section - 1st mention
+    SAS_format_mapping: CSECMEDF
+    SAS_length: 3
+    mapping: &id004
+      '1': Labor was taking too long
+      '2': Maternity care provider concerned that baby was too big
+      '3': Baby was in the wrong position (e.g, breech)
+      '4': Maternity care provider concerned about your health
+      '5': Maternity care provider concerned about your baby's health
+      '6': Some other medical reason
+      '7': There was no medical reason
+      '8': Refused
+      '9': Don't know
+  CSECMED2:
+    start: 21
+    end: 21
+    description: BD-10 Medical reasons reported for this C-section - 2nd mention
+    SAS_format_mapping: CSECMEDF
+    SAS_length: 3
+    mapping: *id004
+  CSECMED3:
+    start: 22
+    end: 22
+    description: BD-10 Medical reasons reported for this C-section - 3rd mention
+    SAS_format_mapping: CSECMEDF
+    SAS_length: 3
+    mapping: *id004
+  CSECMED4:
+    start: 23
+    end: 23
+    description: BD-10 Medical reasons reported for this C-section - 4th mention
+    SAS_format_mapping: CSECMEDF
+    SAS_length: 3
+    mapping: *id004
+  CSECMED5:
+    start: 24
+    end: 24
+    description: BD-10 Medical reasons reported for this C-section - 5th mention
+    SAS_format_mapping: CSECMEDF
+    SAS_length: 3
+    mapping: *id004
+  CSECPLAN:
+    start: 25
+    end: 25
+    description: BD-11 Was this c-section planned for by R?
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  PRIORSMK:
+    start: 26
+    end: 26
+    description: BE-3 Amount R smoked in 6 mos before R knew she was pregnant
+    SAS_format_mapping: PRIORSMK
+    SAS_length: 3
+    mapping:
+      '0': None
+      '1': About one cigarette a day or less
+      '2': Just a few cigarettes a day (2-4)
+      '3': About half a pack a day (5-14)
+      '4': About a pack a day (15-24)
+      '5': About 1 1/2 packs a day (25-34)
+      '6': About 2 packs a day (35-44)
+      '7': More than 2 packs a day (45 or more)
+      '8': Refused
+      '9': Don't know
+  POSTSMKS:
+    start: 27
+    end: 27
+    description: BE-4 R smoked at all after R knew she was pregnant
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  NPOSTSMK:
+    start: 28
+    end: 28
+    description: BE-5 Amount R smoked during pregnancy after R knew she was preg
+    SAS_format_mapping: NPOSTSMK
+    SAS_length: 3
+    mapping:
+      '1': About one cigarette a day or less
+      '2': Just a few cigarettes a day (2-4)
+      '3': About half a pack a day (5-14)
+      '4': About a pack a day (15-24)
+      '5': About 1 1/2 packs a day (25-34)
+      '6': About 2 packs a day (35-44)
+      '7': More than 2 packs a day (45 or more)
+      '8': Refused
+      '9': Don't know
+  ANYNURSE1:
+    start: 29
+    end: 29
+    description: BH-1 Whether R breastfed this child at all - 1st from this preg
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  FEDSOLID1:
+    start: 30
+    end: 30
+    description: BH-2 Has R fed this child anything other than breastmilk - 1st from
+      this preg
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  FRSTEATD_N1:
+    start: 31
+    end: 33
+    description: BH-3 Age (mos/wks/day) when 1st fed non-breastmilk - 1st from this
+      preg
+    SAS_format_mapping: FRSTEATD_NF
+    SAS_length: 4
+    mapping:
+      '998': Refused
+      '999': Don't know
+  FRSTEATD_P1:
+    start: 34
+    end: 34
+    description: BH-3 Units (mos/wks/days) for FRSTEATD_N - 1st from this preg
+    SAS_format_mapping: FRSTEATD_PF
+    SAS_length: 3
+    mapping:
+      '1': Months
+      '2': Weeks
+      '3': Days
+      '8': Refused
+      '9': Don't know
+  FRSTEATD1:
+    start: 35
+    end: 36
+    description: Age (in mos) when 1st fed non-breastmilk - 1st from this preg
+    SAS_format_mapping: FRSTEATDF
+    SAS_length: 3
+    mapping:
+      '0': LESS THAN 1 MONTH
+      '1': 1 MONTH
+      '2': 2 MONTHS
+      '3': 3 MONTHS
+      '4': 4 MONTHS
+      '5': 5 MONTHS
+      '6': 6 MONTHS
+      '98': Refused
+      '99': Don't know
+  QUITNURS1:
+    start: 37
+    end: 37
+    description: BH-4 Has R stopped breastfeeding child - 1st from this preg
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  MDSOLID1:
+    start: 38
+    end: 38
+    description: BH-5a Doctor talked with R about when to feed solid food to this
+      child aged 6 mos-5 yrs old (1st or only from this pregnancy)
+    SAS_format_mapping: Y1N5C
+    SAS_length: 3
+    mapping:
+      '1': 'YES'
+      '5': 'NO'
+      '9': DON'T KNOW
+  WHNSOLID1:
+    start: 39
+    end: 39
+    description: BH-5b Age when doctor recommended feeding this child solid foods
+      (1st or only from this pregnancy)
+    SAS_format_mapping: WHNSOLID
+    SAS_length: 3
+    mapping:
+      '1': Before 4 months of age
+      '2': 4 to 5 months of age
+      '3': 6 months of age or older
+      '8': Refused
+      '9': Don't know
+  MDNUTRIT1_1:
+    start: 40
+    end: 40
+    description: BH-5c Nutrition information given for this child aged 6 mos-5 yrs
+      old (1st mention/1st or only from this preg)
+    SAS_format_mapping: MDNUTRIT
+    SAS_length: 3
+    mapping: &id006
+      '1': Offering foods with many different tastes and textures
+      '2': Not forcing child to finish food or bottles, even if not interested or
+        didn't have much
+      '3': Offering a variety of fruits and vegetables
+      '4': Limiting foods and drinks with added sugar (such as candy, cookies, soda,
+        juice)
+      '5': Limiting eating meals in front of tv or other electronic devices
+      '6': None of the above topics
+      '8': Refused
+      '9': Don't know
+  MDNUTRIT1_2:
+    start: 41
+    end: 41
+    description: BH-5c Nutrition information given for this child aged 6 mos-5 yrs
+      old (2nd mention/1st or only from this preg)
+    SAS_format_mapping: MDNUTRIT
+    SAS_length: 3
+    mapping: *id006
+  MDNUTRIT1_3:
+    start: 42
+    end: 42
+    description: BH-5c Nutrition information given for this child aged 6 mos-5 yrs
+      old (3rd mention/1st or only from this preg)
+    SAS_format_mapping: MDNUTRIT
+    SAS_length: 3
+    mapping: *id006
+  MDNUTRIT1_4:
+    start: 43
+    end: 43
+    description: BH-5c Nutrition information given for this child aged 6 mos-5 yrs
+      old (4th mention/1st or only from this preg)
+    SAS_format_mapping: MDNUTRIT
+    SAS_length: 3
+    mapping: *id006
+  MDNUTRIT1_5:
+    start: 44
+    end: 44
+    description: BH-5c Nutrition information given for this child aged 6 mos-5 yrs
+      old (5th mention/1st or only from this preg)
+    SAS_format_mapping: MDNUTRIT
+    SAS_length: 3
+    mapping: *id006
+  NBRNLV_S:
+    start: 45
+    end: 45
+    description: '# of babies born alive from this preg (based on CCSD)'
+    SAS_format_mapping: NBRNLV_S
+    SAS_length: 3
+    mapping:
+      '1': 1 BABY
+      '2': 2 BABIES
+      '3': 3 BABIES
+      '8': Refused
+      '9': Don't know
+  ANYUSINT:
+    start: 46
+    end: 46
+    description: Any method use in pregnancy interval
+    SAS_format_mapping: Y1N5NRD
+    SAS_length: 3
+    mapping:
+      '1': 'Yes'
+      '5': 'No'
+      '7': Not ascertained
+      '8': Refused
+      '9': Don't know
+  EVUSEINT:
+    start: 47
+    end: 47
+    description: EG-1 Use any method in pregnancy interval?
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  STOPDUSE:
+    start: 48
+    end: 48
+    description: EG-2 Before you became preg, stop using all methods?
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  WHYSTOPD:
+    start: 49
+    end: 49
+    description: EG-3 Stop using methods before preg because wanted preg?
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  WHATMETH01:
+    start: 50
+    end: 51
+    description: EG-4 Method(s) using when became preg - 1st mention
+    SAS_format_mapping: FIRSMETHF
+    SAS_length: 3
+    mapping: &id007
+      '1': No method used
+      '3': Birth control pills
+      '4': Condom
+      '5': Partner's vasectomy
+      '6': Female sterilizing operation, such as tubal sterilization and hysterectomy
+      '7': Withdrawal, pulling out
+      '8': Depo-Provera, injectables
+      '9': Hormonal implant (Norplant, Implanon, or Nexplanon)
+      '10': Calendar rhythm, Standard Days, or Cycle Beads method
+      '11': Safe period by temperature or cervical mucus test (Two Day, Billings Ovulation,
+        or Sympto-thermal Method)
+      '12': Diaphragm
+      '13': Female condom, vaginal pouch
+      '14': Foam
+      '15': Jelly or cream
+      '16': Cervical cap
+      '17': Suppository, insert
+      '18': Today sponge
+      '19': IUD
+      '20': Emergency contraception
+      '21': Other method -- specify
+      '22': Respondent was sterile
+      '23': Respondent's partner was sterile
+      '24': Lunelle injectable (monthly shot)
+      '25': Contraceptive patch (Ortho-Evra or Xulane)
+      '26': Vaginal contraceptive ring
+      '98': Refused
+      '99': Don't know
+  WHATMETH02:
+    start: 52
+    end: 53
+    description: EG-4 Method(s) using when became preg - 2nd mention
+    SAS_format_mapping: FIRSMETHF
+    SAS_length: 3
+    mapping: *id007
+  WHATMETH03:
+    start: 54
+    end: 55
+    description: EG-4 Method(s) using when became preg - 3rd mention
+    SAS_format_mapping: FIRSMETHF
+    SAS_length: 3
+    mapping: *id007
+  WHATMETH04:
+    start: 56
+    end: 57
+    description: EG-4 Method(s) using when became preg - 4th mention
+    SAS_format_mapping: FIRSMETHF
+    SAS_length: 3
+    mapping: *id007
+  RESNOUSE:
+    start: 58
+    end: 58
+    description: EG-5 Reason not using/had stopped using method bec. wanted preg?
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  WANTBOLD:
+    start: 59
+    end: 59
+    description: EG-6 Right bef preg, want to have baby at any time in future?
+    SAS_format_mapping: WANTBOLD
+    SAS_length: 3
+    mapping:
+      '1': 'Yes'
+      '5': 'No'
+      '6': Not sure, Don't know
+      '8': Refused
+      '9': Don't know
+  PROBBABE:
+    start: 60
+    end: 60
+    description: EG-7 probably want baby at any time in future or not?
+    SAS_format_mapping: PROBBABE
+    SAS_length: 3
+    mapping:
+      '1': Probably yes
+      '5': Probably not
+      '6': Didn't care
+      '8': Refused
+      '9': Don't know
+  CNFRMNO:
+    start: 61
+    end: 61
+    description: EG-8 Verify didn't want baby at any time in future
+    SAS_format_mapping: CORINCF
+    SAS_length: 3
+    mapping:
+      '1': Correct
+      '2': Incorrect
+      '8': Refused
+      '9': Don't know
+  WANTBLD2:
+    start: 62
+    end: 62
+    description: EG-9 Right before preg, want to have baby at any time in future?
+      (2nd asking)
+    SAS_format_mapping: WANTBLD2F
+    SAS_length: 3
+    mapping:
+      '1': 'Yes'
+      '5': 'No'
+      '6': Not sure, Don't know
+      '7': Didn't care
+      '8': Refused
+      '9': Don't know
+  TIMINGOK:
+    start: 63
+    end: 63
+    description: EG-10 Become preg too soon, right time, or later than you wanted?
+    SAS_format_mapping: TIMINGF
+    SAS_length: 3
+    mapping: &id009
+      '1': Sooner
+      '2': Right time
+      '3': Later
+      '4': Didn't care
+      '8': Refused
+      '9': Don't know
+  TOOSOON_N:
+    start: 64
+    end: 66
+    description: EG-11 How much sooner than wanted became preg (months or years)
+    SAS_format_mapping: TOOSOONN
+    SAS_length: 4
+    mapping:
+      '998': Refused
+      '999': Don't know
+  TOOSOON_P:
+    start: 67
+    end: 67
+    description: EG-11 Choose mons or yrs for how much sooner became preg than wanted
+    SAS_format_mapping: TOOSOONP
+    SAS_length: 3
+    mapping:
+      '1': Months
+      '2': Years
+      '8': Refused
+      '9': Don't know
+  LATERNUM:
+    start: 68
+    end: 70
+    description: EG-11c How much later than wanted became preg - number
+    SAS_format_mapping: SOONNVF
+    SAS_length: 4
+    mapping:
+      '998': Refused
+      '999': Don't know
+  LATERMY:
+    start: 71
+    end: 71
+    description: EG-11d How much later than wanted became preg - unit
+    SAS_format_mapping: MONYRF
+    SAS_length: 3
+    mapping:
+      '1': Months
+      '2': Years
+      '8': Refused
+      '9': Don't know
+  WTHPART1:
+    start: 72
+    end: 72
+    description: EG-12a Right before preg, want to have baby with that partner?
+    SAS_format_mapping: WTHPARTF
+    SAS_length: 3
+    mapping: &id008
+      '1': Definitely yes
+      '2': Probably yes
+      '3': Probably no
+      '4': Definitely no
+      '8': Refused
+      '9': Don't know
+  WTHPART2:
+    start: 73
+    end: 73
+    description: EG-12b Right bef. preg, think might ever want to have baby w/that
+      partner?
+    SAS_format_mapping: WTHPARTF
+    SAS_length: 3
+    mapping: *id008
+  FEELINPG:
+    start: 74
+    end: 75
+    description: EG-13 How happy to be preg. scale (0-10)
+    SAS_format_mapping: FEELINGF
+    SAS_length: 3
+    mapping:
+      '0': VERY UNHAPPY
+      '1': '1'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '10': VERY HAPPY
+      '98': REFUSED
+      '99': DON'T KNOW
+  HPWNOLD:
+    start: 76
+    end: 76
+    description: EG-16 Right bef preg, did the father want R to have baby at any time
+      in future?
+    SAS_format_mapping: WNTBLDNAF
+    SAS_length: 3
+    mapping:
+      '1': 'Yes'
+      '5': 'No'
+      '6': Not sure, Don't know
+      '7': Not ascertained
+      '8': Refused
+      '9': Don't know
+  TIMOKHP:
+    start: 77
+    end: 77
+    description: EG-17 R became preg sooner, right time, or later than father of preg
+      wanted
+    SAS_format_mapping: TIMINGF
+    SAS_length: 3
+    mapping: *id009
+  COHPBEG:
+    start: 78
+    end: 78
+    description: EG-18a Was R living w/father of preg at beginning of preg
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  COHPEND:
+    start: 79
+    end: 79
+    description: EG-18b Was R living w/father of preg when preg ended/baby was born
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  TELLFATH:
+    start: 80
+    end: 80
+    description: EG-19 Did R tell father of preg that she was pregnant
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  WHENTELL:
+    start: 81
+    end: 81
+    description: 'EG-20 When did R tell father of preg about pregnancy: during or
+      after?'
+    SAS_format_mapping: WHENTELL
+    SAS_length: 3
+    mapping:
+      '1': During the pregnancy
+      '2': After the [pregnancy ended/baby was born]
+      '8': Refused
+      '9': Don't know
+  TRYSCALE:
+    start: 82
+    end: 83
+    description: EG-21 How hard trying to get/avoid pregnancy (0-10 scale)
+    SAS_format_mapping: SCALEF
+    SAS_length: 3
+    mapping: &id010
+      '0': '0'
+      '1': '1'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+      '5': '5'
+      '6': '6'
+      '7': '7'
+      '8': '8'
+      '9': '9'
+      '10': '10'
+      '98': Refused
+      '99': Don't know
+  WANTSCAL:
+    start: 84
+    end: 85
+    description: EG-22 How much wanted to get/avoid pregnancy (0-10 scale)
+    SAS_format_mapping: SCALEF
+    SAS_length: 3
+    mapping: *id010
+  WHYPRG1:
+    start: 86
+    end: 86
+    description: 'EG-23 (unintended preg): method fail or R wasn''t using properly-1st
+      mention'
+    SAS_format_mapping: WHYPRGF
+    SAS_length: 3
+    mapping: &id011
+      '1': Your birth control method failed
+      '2': You did not use your birth control method properly
+      '3': Respondent wasn't using a method
+      '8': Refused
+      '9': Don't know
+  WHYPRG2:
+    start: 87
+    end: 87
+    description: 'EG-23 (unintended preg): method fail or R wasn''t using properly-2nd
+      mention'
+    SAS_format_mapping: WHYPRGF
+    SAS_length: 3
+    mapping: *id011
+  WHYPRG3:
+    start: 88
+    end: 88
+    description: 'EG-23 (unintended preg): method fail or R wasn''t using properly-3rd
+      mention'
+    SAS_format_mapping: WHYPRGF
+    SAS_length: 3
+    mapping: *id011
+  WHYNOUSE1:
+    start: 89
+    end: 90
+    description: EG-24 (unintended preg) Reason didn't use contraceptn - 1st
+    SAS_format_mapping: WHYNOUSEF
+    SAS_length: 3
+    mapping: &id012
+      '1': You did not expect to have sex
+      '2': You did not think you could get pregnant
+      '3': You didn't really mind if you got pregnant
+      '4': You were worried about the side effects of birth control
+      '5': Your male partner did not want you to use a birth control method
+      '6': Your male partner himself did not want to use a birth control method
+      '7': (IF VOLUNTEERED:)Respondent was using a method
+      '8': You could not get a method
+      '9': You were not taking, or using, your method consistently
+      '98': Refused
+      '99': Don't know
+  WHYNOUSE2:
+    start: 91
+    end: 91
+    description: EG-24 (unintended preg) Reason didn't use contraceptn - 2nd
+    SAS_format_mapping: WHYNOUSEF
+    SAS_length: 3
+    mapping: *id012
+  WHYNOUSE3:
+    start: 92
+    end: 92
+    description: EG-24 (unintended preg) Reason didn't use contraceptn - 3rd
+    SAS_format_mapping: WHYNOUSEF
+    SAS_length: 3
+    mapping: *id012
+  WHYNOUSE4:
+    start: 93
+    end: 93
+    description: EG-24 (unintended preg) Reason didn't use contraceptn - 4th
+    SAS_format_mapping: WHYNOUSEF
+    SAS_length: 3
+    mapping: *id012
+  WHYNOUSE5:
+    start: 94
+    end: 94
+    description: EG-24 (unintended preg) Reason didn't use contraceptn - 5th
+    SAS_format_mapping: WHYNOUSEF
+    SAS_length: 3
+    mapping: *id012
+  WHYNOUSE6:
+    start: 95
+    end: 95
+    description: EG-24 (unintended preg) Reason didn't use contraceptn - 6th
+    SAS_format_mapping: WHYNOUSEF
+    SAS_length: 3
+    mapping: *id012
+  WHYNOUSE7:
+    start: 96
+    end: 96
+    description: EG-24 (unintended preg) Reason didn't use contraceptn - 7th
+    SAS_format_mapping: WHYNOUSEF
+    SAS_length: 3
+    mapping: *id012
+  WHYNOPG1:
+    start: 97
+    end: 98
+    description: 'EG-24aa open-ended response: reason didn''t think could get preg
+      - 1st'
+    SAS_format_mapping: WHYNOPGF
+    SAS_length: 3
+    mapping: &id013
+      '1': Diagnosis of repro problems/condition
+      '2': 'Prior preg or attempt: problems with or treatments/ART needed'
+      '3': Prior unprotected sex, no preg
+      '4': Just didn't think would get preg/misunderstood risk
+      '5': Just didn't think could get preg
+      '6': Don't know why/didn't think about it/naive/mistake
+      '7': Thought method was still working (still in her system)
+      '8': Prior/recent miscarriage(s) or ectopic pregnancy
+      '9': Menstrual cycle problems/irregularity
+      '10': Had recent birth
+      '11': Perceive infertile or difficult getting preg/carrying to term
+      '12': Lack of education/knowledge
+      '13': Endometriosis
+      '14': Age (too old)
+      '15': Breastfeeding
+      '16': Believed partner subfecund/infertile/sterile
+      '17': Withdrawal failed
+      '18': Thought it was safe period in cycle
+      '19': Method failure (pill, condom, tubal, IUD, Depo-Provera)
+      '20': Other
+      '97': Not ascertained
+      '98': Refused
+      '99': Don't know
+  WHYNOPG2:
+    start: 99
+    end: 100
+    description: 'EG-24aa open-ended response: reason didn''t think could get preg
+      - 2nd'
+    SAS_format_mapping: WHYNOPGF
+    SAS_length: 3
+    mapping: *id013
+  MAINOUSE:
+    start: 101
+    end: 101
+    description: EG-24a (unintended preg) Main reason didn't use contraception
+    SAS_format_mapping: MAINOUSE
+    SAS_length: 3
+    mapping:
+      '1': You did not expect to have sex
+      '2': You did not think you could get pregnant
+      '3': You didn't really mind if you got pregnant
+      '4': You were worried about the side effects of birth control
+      '5': Your male partner did not want you to use a birth control method
+      '6': Your male partner himself did not want to use a birth control method
+      '8': You could not get a method
+      '9': You were not taking, or using, your method consistently
+      '98': Refused
+      '99': Don't know
+  GEST_LB:
+    start: 102
+    end: 102
+    description: Gestational length (if live birth)
+    SAS_format_mapping: GESTLB
+    SAS_length: 3
+    mapping:
+      '1': EARLY PRETERM (< 34 WEEKS)
+      '2': PRETERM (34-36 WEEKS)
+      '3': TERM (37-40 WEEKS)
+      '4': POST-TERM (> 40 WEEKS)
+  GEST_OTHR:
+    start: 103
+    end: 103
+    description: Gestational length (if not live birth or current preg)
+    SAS_format_mapping: GESTOTHR
+    SAS_length: 3
+    mapping:
+      '1': 1ST TRIMESTER (0-13 WEEKS)
+      '2': 2ND TRIMESTER (14-26 WEEKS)
+      '3': 3RD TRIMESTER (> 26 WEEKS)
+  GESTIMP:
+    start: 104
+    end: 104
+    description: GEST_LB or GEST_OTHR var based on imputed gestational length
+    SAS_format_mapping: YESNO12F
+    SAS_length: 3
+    mapping:
+      '1': 'Yes'
+      '2': 'No'
+  OUTCOME:
+    start: 105
+    end: 105
+    description: Pregnancy outcome
+    SAS_format_mapping: OUTCOME
+    SAS_length: 3
+    mapping:
+      '1': LIVE BIRTH
+      '2': INDUCED ABORTION
+      '3': STILLBIRTH
+      '4': MISCARRIAGE
+      '5': ECTOPIC PREGNANCY
+      '6': CURRENT PREGNANCY
+  BIRTHORD:
+    start: 106
+    end: 107
+    description: Birth order
+    SAS_format_mapping: BIRTHORD
+    SAS_length: 3
+    mapping:
+      '1': 1ST BIRTH
+      '2': 2ND BIRTH
+      '3': 3RD BIRTH
+      '4': 4TH BIRTH
+      '5': 5TH BIRTH
+      '6': 6TH BIRTH
+      '7': 7TH BIRTH
+      '8': 8TH BIRTH
+      '9': 9TH BIRTH
+      '10': 10TH BIRTH
+      '11': 11TH BIRTH
+      '12': 12TH BIRTH
+      '13': 13TH BIRTH
+      '14': 14TH BIRTH
+  DATEND:
+    start: 108
+    end: 111
+    description: Year pregnancy ended
+    SAS_format_mapping: YEARFMT
+    SAS_length: 4
+    mapping: &id014
+      '9997': Not ascertained
+      '9998': Refused
+      '9999': Don't know
+  AGEPREG:
+    start: 112
+    end: 113
+    description: Age at pregnancy outcome
+    SAS_length: 3
+  DATECON:
+    start: 114
+    end: 117
+    description: Year pregnancy began
+    SAS_format_mapping: YEARFMT
+    SAS_length: 4
+    mapping: *id014
+  AGECON:
+    start: 118
+    end: 119
+    description: Age at time of conception
+    SAS_length: 3
+  FMAROUT5:
+    start: 120
+    end: 120
+    description: Formal marital status at pregnancy outcome
+    SAS_format_mapping: MARN1FMT
+    SAS_length: 3
+    mapping: &id015
+      '1': MARRIED
+      '2': DIVORCED
+      '3': WIDOWED
+      '4': SEPARATED
+      '5': NEVER MARRIED
+  PMARPREG:
+    start: 121
+    end: 121
+    description: Whether pregnancy ended before R's 1st marriage (premaritally)
+    SAS_format_mapping: PMARPREG
+    SAS_length: 3
+    mapping:
+      '1': 'YES'
+      '2': 'No'
+  RMAROUT6:
+    start: 122
+    end: 122
+    description: Informal marital status at pregnancy outcome - 6 categories
+    SAS_format_mapping: RMAR6FMT
+    SAS_length: 3
+    mapping: &id016
+      '1': MARRIED
+      '2': DIVORCED
+      '3': WIDOWED
+      '4': SEPARATED
+      '5': COHABITING
+      '6': NEVER MARRIED, NOT COHABITING
+  FMARCON5:
+    start: 123
+    end: 123
+    description: Formal marital status at conception - 5 categories
+    SAS_format_mapping: MARN1FMT
+    SAS_length: 3
+    mapping: *id015
+  RMARCON6:
+    start: 124
+    end: 124
+    description: Informal marital status at conception - 6 categories
+    SAS_format_mapping: RMAR6FMT
+    SAS_length: 3
+    mapping: *id016
+  LEARNPRG:
+    start: 125
+    end: 125
+    description: Number of weeks pregnant when R learned she was pregnant
+    SAS_format_mapping: LEARNPRG
+    SAS_length: 3
+    mapping:
+      '1': 13 WEEKS OR EARLIER
+      '2': 14 WEEKS OR LATER
+  PNCAREWK:
+    start: 126
+    end: 126
+    description: Number of weeks pregnant at first prenatal care
+    SAS_format_mapping: PNCAREWK
+    SAS_length: 3
+    mapping:
+      '1': 13 WEEKS OR EARLIER
+      '2': 14 WEEKS OR LATER
+      '3': NO PRENATAL CARE FOR THIS PREGNANCY
+  PAYDELIV:
+    start: 127
+    end: 127
+    description: Payment for delivery
+    SAS_format_mapping: PAYDELIV
+    SAS_length: 3
+    mapping:
+      '1': OWN INCOME ONLY
+      '2': INSURANCE ONLY
+      '3': OWN INCOME & INSURANCE ONLY
+      '4': MEDICAID/GOVT ASSISTANCE MENTIONED AT ALL
+      '5': ALL OTHER COMBINATIONS OF PAYMENT METHODS
+  LBW1:
+    start: 128
+    end: 128
+    description: Low birthweight - 1st baby from this preg
+    SAS_format_mapping: LBWF
+    SAS_length: 3
+    mapping:
+      '1': YES, LOW BIRTH WEIGHT
+      '2': NO, NOT LOW BIRTH WEIGHT
+  BFEEDWKS:
+    start: 129
+    end: 129
+    description: Duration of breastfeeding in weeks
+    SAS_format_mapping: BFEEDWKS
+    SAS_length: 3
+    mapping:
+      '0': Never breastfed this child
+      '1': Breastfed less than 1 week
+      '2': Breastfed 1-13 weeks (LE 3 mos)
+      '3': Breastfed 14-26 weeks (>3/LE 6 mos)
+      '4': Breastfed 27-52 weeks (>6/LE 12 mos)
+      '5': Breastfed 53-104 weeks (>1/LE 2 yrs)
+      '6': Breastfed 105+ weeks (>2 yrs)
+      '7': Still breastfeeding this child
+  OLDWANTR:
+    start: 130
+    end: 130
+    description: Wantedness of pregnancy - respondent - Cycle 4 version
+    SAS_format_mapping: OLDWANTP
+    SAS_length: 3
+    mapping: &id017
+      '1': LATER, OVERDUE
+      '2': RIGHT TIME
+      '3': TOO SOON, MISTIMED
+      '4': DIDN'T CARE, INDIFFERENT
+      '5': UNWANTED
+      '6': DON'T KNOW, NOT SURE
+  OLDWANTP:
+    start: 131
+    end: 131
+    description: Wantedness of preg - R's partner (father of pregnancy) - Cycle 4
+      version
+    SAS_format_mapping: OLDWANTP
+    SAS_length: 3
+    mapping: *id017
+  WANTRESP:
+    start: 132
+    end: 132
+    description: Wantedness of pregnancy -- Respondent (RECODE)
+    SAS_format_mapping: OLDWANTP
+    SAS_length: 3
+    mapping: *id017
+  WANTPART:
+    start: 133
+    end: 133
+    description: Wantedness of pregnancy -- R's partner (RECODE)
+    SAS_format_mapping: OLDWANTP
+    SAS_length: 3
+    mapping: *id017
+  TOOSOON:
+    start: 134
+    end: 136
+    description: Number of months too soon pregnancy occurred
+    SAS_format_mapping: TOOSOON
+    SAS_length: 4
+    mapping:
+      '998': Refused
+      '999': Don't know
+  NEWWANTR:
+    start: 137
+    end: 137
+    description: Detailed wantedness of pregnancy - respondent
+    SAS_format_mapping: NEWWANTR
+    SAS_length: 3
+    mapping:
+      '1': Later, overdue
+      '2': Right time
+      '3': 'Too soon: by less than 2 years'
+      '4': 'Too soon: by 2 years or more'
+      '5': Didn't care, indifferent
+      '6': Unwanted
+      '7': Don't know, not sure
+  AGER:
+    start: 138
+    end: 139
+    description: Age at interview
+    SAS_format_mapping: AGER
+    SAS_length: 3
+    mapping:
+      '15': 15 YEARS
+      '16': 16 YEARS
+      '17': 17 YEARS
+      '18': 18 YEARS
+      '19': 19 YEARS
+      '20': 20 YEARS
+      '21': 21 YEARS
+      '22': 22 YEARS
+      '23': 23 YEARS
+      '24': 24 YEARS
+      '25': 25 YEARS
+      '26': 26 YEARS
+      '27': 27 YEARS
+      '28': 28 YEARS
+      '29': 29 YEARS
+      '30': 30 YEARS
+      '31': 31 YEARS
+      '32': 32 YEARS
+      '33': 33 YEARS
+      '34': 34 YEARS
+      '35': 35 YEARS
+      '36': 36 YEARS
+      '37': 37 YEARS
+      '38': 38 YEARS
+      '39': 39 YEARS
+      '40': 40 YEARS
+      '41': 41 YEARS
+      '42': 42 YEARS
+      '43': 43 YEARS
+      '44': 44 YEARS
+      '45': 45 YEARS
+      '46': 46 YEARS
+      '47': 47 YEARS
+      '48': 48 YEARS
+  AGESCRN:
+    start: 140
+    end: 141
+    description: R's age at screener
+    SAS_format_mapping: AGESCRN
+    SAS_length: 3
+    mapping:
+      '15': 15 years
+      '16': 16 years
+      '17': 17 years
+      '18': 18 years
+      '19': 19 years
+      '20': 20 years
+      '21': 21 years
+      '22': 22 years
+      '23': 23 years
+      '24': 24 years
+      '25': 25 years
+      '26': 26 years
+      '27': 27 years
+      '28': 28 years
+      '29': 29 years
+      '30': 30 years
+      '31': 31 years
+      '32': 32 years
+      '33': 33 years
+      '34': 34 years
+      '35': 35 years
+      '36': 36 years
+      '37': 37 years
+      '38': 38 years
+      '39': 39 years
+      '40': 40 years
+      '41': 41 years
+      '42': 42 years
+      '43': 43 years
+      '44': 44 years
+      '45': 45 years
+      '46': 46 years
+      '47': 47 years
+      '48': 48 years
+      '49': 49 years
+      '97': Not ascertained
+  FMARITAL:
+    start: 142
+    end: 142
+    description: Formal marital status
+    SAS_format_mapping: FMARITAL
+    SAS_length: 3
+    mapping:
+      '1': MARRIED TO A PERSON OF THE OPPOSITE SEX
+      '2': WIDOWED
+      '3': DIVORCED OR ANNULLED
+      '4': SEPARATED
+      '5': NEVER MARRIED
+  RMARITAL:
+    start: 143
+    end: 143
+    description: Informal Marital Status
+    SAS_format_mapping: RMARITAL
+    SAS_length: 3
+    mapping:
+      '1': CURRENTLY MARRIED
+      '2': NOT MARRIED BUT LIVING WITH OPP SEX PARTNER
+      '3': WIDOWED
+      '4': DIVORCED
+      '5': SEPARATED FOR REASONS OF MARITAL DISCORD
+      '6': NEVER BEEN MARRIED
+  EDUCAT:
+    start: 144
+    end: 145
+    description: Education (completed years of schooling)
+    SAS_format_mapping: EDUCAT
+    SAS_length: 3
+    mapping:
+      '9': 9TH GRADE OR LESS
+      '10': 10TH GRADE
+      '11': 11TH GRADE
+      '12': 12TH GRADE
+      '13': 1 YEAR OF COLLEGE/GRAD SCHOOL
+      '14': 2 YEARS OF COLLEGE/GRAD SCHOOL
+      '15': 3 YEARS OF COLLEGE/GRAD SCHOOL
+      '16': 4 YEARS OF COLLEGE/GRAD SCHOOL
+      '17': 5 YEARS OF COLLEGE/GRAD SCHOOL
+      '18': 6 YEARS OF COLLEGE/GRAD SCHOOL
+      '19': 7+ YEARS OF COLLEGE/GRAD SCHOOL
+  HIEDUC:
+    start: 146
+    end: 147
+    description: Highest completed year of school or degree
+    SAS_format_mapping: HIEDUC
+    SAS_length: 3
+    mapping:
+      '5': 9TH GRADE OR LESS
+      '6': 10TH GRADE
+      '7': 11TH GRADE
+      '8': 12TH GRADE, NO DIPLOMA (NOR GED)
+      '9': HIGH SCHOOL GRADUATE (DIPLOMA OR GED)
+      '10': SOME COLLEGE BUT NO DEGREE
+      '11': ASSOCIATE DEGREE IN COLLEGE/UNIVERSITY
+      '12': BACHELOR'S DEGREE
+      '13': MASTER'S DEGREE
+      '14': DOCTORATE DEGREE
+      '15': PROFESSIONAL DEGREE
+  RACE:
+    start: 148
+    end: 148
+    description: Race
+    SAS_format_mapping: RACE
+    SAS_length: 3
+    mapping:
+      '1': BLACK
+      '2': WHITE
+      '3': OTHER
+  HISPANIC:
+    start: 149
+    end: 149
+    description: Hispanic origin
+    SAS_format_mapping: HISPANIC
+    SAS_length: 3
+    mapping:
+      '1': HISPANIC
+      '2': NON-HISPANIC
+  HISPRACE2:
+    start: 150
+    end: 150
+    description: Race & Hispanic origin of respondent - 1997 OMB standards (respondent
+      recode)
+    SAS_format_mapping: HISPRACE2F
+    SAS_length: 3
+    mapping:
+      '1': Hispanic
+      '2': Non-Hispanic White, Single Race
+      '3': Non-Hispanic Black, Single Race
+      '4': Non-Hispanic Other or Multiple Race
+  RCURPREG:
+    start: 151
+    end: 151
+    description: Pregnant at time of interview
+    SAS_format_mapping: RCURPREG
+    SAS_length: 3
+    mapping:
+      '1': YES (CURRENTLY PREGNANT)
+      '2': NO (NOT CURRENTLY PREGNANT)
+  PREGNUM:
+    start: 152
+    end: 153
+    description: CAPI-based total number of pregnancies
+    SAS_format_mapping: PREGNUMF
+    SAS_length: 3
+    mapping:
+      '0': NONE
+      '1': 1 PREGNANCY
+      '2': 2 PREGNANCIES
+      '3': 3 PREGNANCIES
+      '4': 4 PREGNANCIES
+      '5': 5 PREGNANCIES
+      '6': 6 PREGNANCIES
+  PARITY:
+    start: 154
+    end: 155
+    description: Total number of live births
+    SAS_format_mapping: PARITY
+    SAS_length: 3
+    mapping:
+      '0': 0 BABIES
+      '1': 1 BABY
+      '2': 2 BABIES
+      '3': 3 BABIES
+      '4': 4 BABIES
+  CURR_INS:
+    start: 156
+    end: 156
+    description: Current health insurance coverage
+    SAS_format_mapping: CURR_INS
+    SAS_length: 3
+    mapping:
+      '1': Currently covered by private health insurance or Medi-Gap
+      '2': Currently covered by Medicaid, CHIP, or a state-sponsored health plan
+      '3': Currently covered by Medicare, military health care, or other government
+        health care
+      '4': Currently covered only by a single-service plan, only by the Indian Health
+        Service, or currently not covered by health insurance
+  PUBASSIS:
+    start: 157
+    end: 157
+    description: Whether R received public assistance in prior calendar year
+    SAS_format_mapping: PUBASSIS
+    SAS_length: 3
+    mapping:
+      '1': YES (RECEIVED PUBLIC ASSISTANCE IN [INTERVIEW YEAR -1])
+      '2': NO (DID NOT RECEIVE PUBLIC ASSISTANCE IN [INTERVIEW YEAR -1])
+  POVERTY:
+    start: 158
+    end: 160
+    description: Poverty level income
+    SAS_format_mapping: POVERTY
+    SAS_length: 4
+    mapping:
+      '50': 50 PERCENT OF POVERTY LEVEL
+      '700': 700 PERCENT OF POVERTY LEVEL OR GREATER
+  LABORFOR:
+    start: 161
+    end: 161
+    description: Labor force status
+    SAS_format_mapping: LABORFOR
+    SAS_length: 3
+    mapping:
+      '1': WORKING FULL-TIME
+      '2': WORKING PART-TIME
+      '3': WORKING-TEMP ILL/ETC
+      '4': WORKING-MATERNITY OR FAMILY LEAVE
+      '5': NOT WORKING BUT LOOKING FOR WORK
+      '6': SCHOOL
+      '7': KEEPING HOUSE
+      '8': CARING FOR FAMILY
+      '9': OTHER
+  RELIGION:
+    start: 162
+    end: 162
+    description: Current religious affiliation
+    SAS_format_mapping: RELIGION
+    SAS_length: 3
+    mapping:
+      '1': NO RELIGION
+      '2': CATHOLIC
+      '3': PROTESTANT
+      '4': OTHER RELIGIONS
+  METRO:
+    start: 163
+    end: 163
+    description: Place of residence (Metropolitan / Nonmetropolitan)
+    SAS_format_mapping: METRO
+    SAS_length: 3
+    mapping:
+      '1': PRINCIPAL CITY OF MSA
+      '2': OTHER MSA
+      '3': NOT MSA
+  BRNOUT:
+    start: 164
+    end: 164
+    description: IB-8 R born outside of US
+    SAS_format_mapping: Y1N51D
+    SAS_length: 3
+    mapping: *id005
+  YRSTRUS:
+    start: 165
+    end: 166
+    description: Year R came to the United States
+    SAS_format_mapping: YRSTRUS
+    SAS_length: 3
+    mapping:
+      '1': 1968-1989
+      '2': 1990-1999
+      '3': 2000-2009
+      '4': 2010-2019
+      '98': Refused
+      '99': Don't know
+  OUTCOME_I:
+    start: 167
+    end: 167
+    description: OUTCOME Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: &id018
+      '0': QUESTIONNAIRE DATA (NOT IMPUTED)
+      '1': MULTIPLE REGRESSION IMPUTATION
+      '2': LOGICAL IMPUTATION
+  BIRTHORD_I:
+    start: 168
+    end: 168
+    description: BIRTHORD Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  DATEND_I:
+    start: 169
+    end: 169
+    description: DATEND Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  AGEPREG_I:
+    start: 170
+    end: 170
+    description: AGEPREG Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  DATECON_I:
+    start: 171
+    end: 171
+    description: DATECON Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  AGECON_I:
+    start: 172
+    end: 172
+    description: AGECON Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  FMAROUT5_I:
+    start: 173
+    end: 173
+    description: FMAROUT5 Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  PMARPREG_I:
+    start: 174
+    end: 174
+    description: PMARPREG Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  RMAROUT6_I:
+    start: 175
+    end: 175
+    description: RMAROUT6 Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  FMARCON5_I:
+    start: 176
+    end: 176
+    description: FMARCON5 Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  RMARCON6_I:
+    start: 177
+    end: 177
+    description: RMARCON6 Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  LEARNPRG_I:
+    start: 178
+    end: 178
+    description: LEARNPRG Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  PNCAREWK_I:
+    start: 179
+    end: 179
+    description: PNCAREWK Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  PAYDELIV_I:
+    start: 180
+    end: 180
+    description: PAYDELIV Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  LBW1_I:
+    start: 181
+    end: 181
+    description: LBW1 Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  BFEEDWKS_I:
+    start: 182
+    end: 182
+    description: BFEEDWKS Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  OLDWANTR_I:
+    start: 183
+    end: 183
+    description: OLDWANTR Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  OLDWANTP_I:
+    start: 184
+    end: 184
+    description: OLDWANTP Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  WANTRESP_I:
+    start: 185
+    end: 185
+    description: WANTRESP Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  WANTPART_I:
+    start: 186
+    end: 186
+    description: WANTPART Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  TOOSOON_I:
+    start: 187
+    end: 187
+    description: TOOSOON Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  NEWWANTR_I:
+    start: 188
+    end: 188
+    description: NEWWANTR Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  AGER_I:
+    start: 189
+    end: 189
+    description: AGER Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  FMARITAL_I:
+    start: 190
+    end: 190
+    description: FMARITAL Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  RMARITAL_I:
+    start: 191
+    end: 191
+    description: RMARITAL Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  EDUCAT_I:
+    start: 192
+    end: 192
+    description: EDUCAT Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  HIEDUC_I:
+    start: 193
+    end: 193
+    description: HIEDUC Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  RACE_I:
+    start: 194
+    end: 194
+    description: RACE Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  HISPANIC_I:
+    start: 195
+    end: 195
+    description: HISPANIC Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  HISPRACE2_I:
+    start: 196
+    end: 196
+    description: HISPRACE2 Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  RCURPREG_I:
+    start: 197
+    end: 197
+    description: RCURPREG Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  PREGNUM_I:
+    start: 198
+    end: 198
+    description: PREGNUM Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  PARITY_I:
+    start: 199
+    end: 199
+    description: PARITY Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  CURR_INS_I:
+    start: 200
+    end: 200
+    description: CURR_INS Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  PUBASSIS_I:
+    start: 201
+    end: 201
+    description: PUBASSIS Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  POVERTY_I:
+    start: 202
+    end: 202
+    description: POVERTY Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  LABORFOR_I:
+    start: 203
+    end: 203
+    description: LABORFOR Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  RELIGION_I:
+    start: 204
+    end: 204
+    description: RELIGION Imputation Flag
+    SAS_format_mapping: IMPFLG
+    SAS_length: 3
+    mapping: *id018
+  WGT2017_2019:
+    start: 205
+    end: 220
+    description: Final weight for the 2017-2019 NSFG
+  SECU:
+    start: 221
+    end: 221
+    description: Randomized version of the sampling error computational unit
+    SAS_format_mapping: SECU
+    SAS_length: 3
+    mapping:
+      '1': '1'
+      '2': '2'
+      '3': '3'
+      '4': '4'
+  SEST:
+    start: 222
+    end: 224
+    description: Randomized version of the stratum
+    SAS_length: 4
+  CMINTVW:
+    start: 225
+    end: 228
+    description: Century month for date of interview  (Computed in Flow Check A-1)
+    SAS_format_mapping: CMFMT
+    SAS_length: 4
+    mapping: &id019
+      '9997': Not ascertained
+      '9998': Refused
+      '9999': Don't know
+  CMLSTYR:
+    start: 229
+    end: 232
+    description: Century month for month/year of interview minus one year (Computed
+      in Flow Check A-1)
+    SAS_format_mapping: CMFMT
+    SAS_length: 4
+    mapping: *id019
+  CMJAN3YR:
+    start: 233
+    end: 236
+    description: Century month of January Three Years Prior to Year of interview (Computed
+      in Flow Check A-1)
+    SAS_format_mapping: CMJAN3YRF
+    SAS_length: 4
+    mapping:
+      '1345': January 2012
+      '1357': January 2013
+      '1369': January 2014
+      '1381': January 2015
+      '1393': January 2016
+  CMJAN4YR:
+    start: 237
+    end: 240
+    description: Century month of January Four Years Prior to Year of Interview (Computed
+      in Flow Check A-1)
+    SAS_format_mapping: CMJAN4YRF
+    SAS_length: 4
+    mapping:
+      '1333': January 2011
+      '1345': January 2012
+      '1357': January 2013
+      '1369': January 2014
+      '1381': January 2015
+  CMJAN5YR:
+    start: 241
+    end: 244
+    description: Century month of January Five Years Prior to Year of Interview (Computed
+      in Flow Check A-1)
+    SAS_format_mapping: CMJAN5YRF
+    SAS_length: 4
+    mapping:
+      '1321': January 2010
+      '1333': January 2011
+      '1345': January 2012
+      '1357': January 2013
+      '1369': January 2014
+  QUARTER:
+    start: 245
+    end: 246
+    description: Quarter when case was sampled
+    SAS_length: 3
+  PHASE:
+    start: 247
+    end: 247
+    description: Regular- or double-sample portion of the quarter
+    SAS_format_mapping: PHASE
+    SAS_length: 3
+    mapping:
+      '1': First 10 weeks of quarter
+      '2': Last 2 weeks of quarter (double sample)
+  INTVWYEAR:
+    start: 248
+    end: 251
+    description: Calendar year when interview occurred
+    SAS_length: 4

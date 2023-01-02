@@ -100,7 +100,8 @@ class ProjectParser:
             f_spec = self.build_specification(f_SAS)
 
         f_data = self.download(info["fixed_width_data"])
-
+        
+        '''
         df, spec = self.convert(f_spec, f_data)
         print(df)
 
@@ -112,7 +113,7 @@ class ProjectParser:
             df[col] = df[col].map(row["mapping"])
 
         df.to_csv("example_parsed.csv", index=False)
-
+        '''
 
 #########################################################################
 
