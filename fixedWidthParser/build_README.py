@@ -21,7 +21,13 @@ for f_project in Path("projects/").glob("*.yaml"):
         name = dataset["name"]
         f_spec = Path(dataset["SAS_import"]).stem + ".yaml"
         f_spec = folder / "specification" / f_spec
-        line = f"+ {name} [:notebook:]({f_spec})"
+
+        # Add a little check for the spec statements
+        if f_spec.exists():
+            line = f"+ {name} [:notebook:]({f_spec})"
+        else:
+            line = f"+ {name} [:no_entry_sign:]()"
+
         output.append(line)
 
 output = "\n".join(output) + "\n"
