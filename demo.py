@@ -94,6 +94,25 @@ class ProjectParser:
         )
         return df, spec
 
+    def check_spec(self, spec):
+        """
+        Checks the spec for anything amiss and warns the users.
+
+        + Checks for any keys in the mapping are not integers
+        """
+
+        columns = spec["columns"]
+        for col, row in columns.items():
+            if "mapping" not in row:
+                continue
+
+            for k, v in row["mapping"].items():
+                try:
+                    int(k)
+                except:
+                    print(f"WARNING: Column {col} is not a int: {k} {v}")
+                    exit()
+
     def parse(self, info):
 
         if "SAS_import" in info:
@@ -111,17 +130,20 @@ class ProjectParser:
             mkdir(f_save1)
 
             df, spec = self.convert(f_spec, f_data)
+
+            self.check_spec(spec)
+
             df.to_csv(f_save0, index=False, compression="bz2")
 
-            x = spec["columns"]["QUARTER"]["mapping"]
-
-            # print(len(spec['columns']))
-            exit()
-
-            for col, row in tqdm(spec["columns"].items(), total=len(spec)):
-                if "mapping" not in row:
-                    continue
-                df[col] = df[col].map(row["mapping"])
+            # It is 50x faster to create a new dataframe vs work in place
+            columns = spec["columns"]
+            data = []
+            for col, row in tqdm(columns.items(), total=len(columns)):
+                column = df[col].copy()
+                if "mapping" in row:
+                    column = column.map(row["mapping"])
+                data.append(column)
+            df = pd.concat(data, axis=1, keys=columns.keys())
             df.to_csv(f_save1, index=False, compression="bz2")
 
 
