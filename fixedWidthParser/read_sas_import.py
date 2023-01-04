@@ -147,12 +147,11 @@ def parse_PROC(section):
       7 = 'Not ascertained' ;
     """
 
-    value_markers = r"""(?sm)^ +(value \$\w+\n)(.*?);\r?$"""
+    value_markers = r"""(?sm)^ +(value \$?\w+\n)(.*?);\r?$"""
     info = {}
 
     for block in re.findall(value_markers, section):
         variable_name = block[0].split()[1].strip()
-
         info[variable_name] = {}
 
         for line in block[1].split("\n"):
