@@ -7,12 +7,18 @@ def extract_key_value_pair(line):
     tokens = line.split("=")
     key = tokens[0]
     val = " ".join(tokens[1:])
+    return clean_key_val(key, val)
 
-    key = key.strip()
+
+def clean_key_val(key, val):
+    """
+    Cleans a key or value by striping whitespace, removing extra quotes,
+    and forcing case.
+    """
+    key = key.strip().strip('"').strip("'").strip().upper()
 
     val = val.replace("''", "'")
     val = val.strip().rstrip(";").strip().strip("'").strip('"')
-
     return key, val
 
 
@@ -50,6 +56,7 @@ def parse_LENGTH(section):
     info = {}
 
     for key, val in zip(tokens[::2], tokens[1::2]):
+        key, val = clean_key_val(key, val)
         info[key] = {"SAS_length": int(val)}
 
     return info
@@ -71,7 +78,9 @@ def parse_FORMAT(section):
     info = {}
 
     for key, val in zip(tokens[::2], tokens[1::2]):
+        key, val = clean_key_val(key, val)
         val = val.rstrip(".")
+
         info[key] = {"SAS_format_mapping": val}
 
     return info
@@ -97,6 +106,8 @@ def parse_INPUT(section):
     tokens = [x for x in tokens if x != "$"]
 
     for key, val in zip(tokens[::2], tokens[1::2]):
+        key, val = clean_key_val(key, val)
+
         val = val.rstrip(".")
 
         val = val.split("-")
@@ -170,7 +181,6 @@ def parse_SAS_import(raw_SAS: str):
 
     # Remove first section before section marker
     sections = sections[1:]
-
     columns = defaultdict(dict)
 
     for section in sections:

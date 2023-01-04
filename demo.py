@@ -113,6 +113,11 @@ class ProjectParser:
             df, spec = self.convert(f_spec, f_data)
             df.to_csv(f_save0, index=False, compression="bz2")
 
+            x = spec["columns"]["QUARTER"]["mapping"]
+
+            # print(len(spec['columns']))
+            exit()
+
             for col, row in tqdm(spec["columns"].items(), total=len(spec)):
                 if "mapping" not in row:
                     continue

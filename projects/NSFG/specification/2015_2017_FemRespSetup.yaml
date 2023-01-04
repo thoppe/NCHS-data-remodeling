@@ -8467,12 +8467,14 @@ columns:
     SAS_format_mapping: CMFMT
     SAS_length: 4
     mapping: *id043
-  INTR_ED4a:
+  INTR_ED4A:
     start: 1675
     end: 1675
     description: 'ED-4a For Rs who had hysterectomies before start of meth cal: use
       any method since Jan [interview yr - 3]/start of method calendar]?'
+    SAS_format_mapping: Y1N5RDF
     SAS_length: 3
+    mapping: *id004
   NUMMCMON:
     start: 1676
     end: 1677
@@ -24291,31 +24293,31 @@ columns:
     description: Quarter when case was sampled
     SAS_format_mapping: $QUARTER
     mapping:
-      '"17"': '17'
-      '"18"': '18'
-      '"19"': '19'
-      '"20"': '20'
-      '"21"': '21'
-      '"22"': '22'
-      '"23"': '23'
-      '"24"': '24'
+      '17': '17'
+      '18': '18'
+      '19': '19'
+      '20': '20'
+      '21': '21'
+      '22': '22'
+      '23': '23'
+      '24': '24'
   PHASE:
     start: 4512
     end: 4512
     description: Regular- or double-sample portion of the quarter
     SAS_format_mapping: $PHASE
     mapping:
-      '"1"': First 10 weeks of quarter
-      '"2"': Last 2 weeks of quarter (double sample)
+      '1': First 10 weeks of quarter
+      '2': Last 2 weeks of quarter (double sample)
   INTVWYEAR:
     start: 4513
     end: 4516
     description: Calendar year when interview occurred
     SAS_format_mapping: $YEARF
     mapping:
-      '"2015"': '2015'
-      '"2016"': '2016'
-      '"2017"': '2017'
+      '2015': '2015'
+      '2016': '2016'
+      '2017': '2017'
   INTVLNGTH:
     start: 4517
     end: 4522
@@ -24323,6 +24325,3 @@ columns:
     SAS_format_mapping: INTVLNGTH
     mapping:
       14-263.17: 14-263.17
-  INTR_ED4A:
-    SAS_format_mapping: Y1N5RDF
-    mapping: *id004
