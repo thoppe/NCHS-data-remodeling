@@ -1,0 +1,12 @@
+project_name: National Health Care Surveys
+project_folder: NAMCS
+homepage: https://www.cdc.gov/nchs/ahcd/index.htm
+
+base_url: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/
+
+collection:
+  -
+    name: NAMCS 2019
+    SAS_import: 
+    SAS_multi_import: [Dataset_Documentation/NAMCS/sas/nam19lab.txt, Dataset_Documentation/NAMCS/sas/nam19inp.txt, Dataset_Documentation/NAMCS/sas/nam19for.txt]
+    fixed_width_data: Datasets/NAMCS/namcs2019.zip

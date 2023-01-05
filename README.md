@@ -25,8 +25,12 @@ Converting NCHS fixed-width datasets to CSV in a reproducible way.
 ```
 
 + Add in a description for each dataset.
++ Import multiple files from SAS import (NAMCS)
++ Import from sas7bdat (NAMCS)
 
 # Datasets
+## National Health Care Surveys [:notebook:](projects/NAMCS.yaml) [:house:](https://www.cdc.gov/nchs/ahcd/index.htm)
++ :no_entry_sign: NAMCS 2019
 ## National Survey of Family Growth [:notebook:](projects/NSFG.yaml) [:house:](https://www.cdc.gov/nchs/nsfg/index.htm)
 + [:notebook:](projects/NSFG/specification/2017_2019_FemRespSetup.yaml) 2017-2019 NSFG Female Response
 + [:notebook:](projects/NSFG/specification/2017_2019_FemPregSetup.yaml) 2017-2019 NSFG Female Pregnant Response
@@ -34,9 +38,9 @@ Converting NCHS fixed-width datasets to CSV in a reproducible way.
 + [:notebook:](projects/NSFG/specification/2015_2017_FemRespSetup.yaml) 2015-2017 NSFG Female Response
 + [:notebook:](projects/NSFG/specification/2015_2017_FemPregSetup.yaml) 2015-2017 NSFG Female Pregnant Response
 + [:notebook:](projects/NSFG/specification/2015_2017_MaleSetup.yaml) 2015-2017 NSFG Male Response
-+ [:no_entry_sign:]() 2013-2015 NSFG Female Response
-+ [:no_entry_sign:]() 2013-2015 NSFG Female Pregnant Response
-+ [:no_entry_sign:]() 2013-2015 NSFG Male Response
++ [:notebook:](projects/NSFG/specification/2013_2015_FemRespSetup.yaml) 2013-2015 NSFG Female Response
++ [:notebook:](projects/NSFG/specification/2013_2015_FemPregSetup.yaml) 2013-2015 NSFG Female Pregnant Response
++ [:notebook:](projects/NSFG/specification/2013_2015_MaleSetup.yaml) 2013-2015 NSFG Male Response
 
 # Credits
 

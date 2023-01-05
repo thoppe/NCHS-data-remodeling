@@ -3,6 +3,9 @@ from pathlib import Path
 
 output = []
 
+line = "# Datasets"
+output.append(line)
+
 for f_project in Path("projects/").glob("*.yaml"):
     with open(f_project) as FIN:
         info = yaml.safe_load(FIN.read())
@@ -11,22 +14,21 @@ for f_project in Path("projects/").glob("*.yaml"):
     homepage = info["homepage"]
     folder = Path("projects") / info["project_folder"]
 
-    line = "# Datasets"
-    output.append(line)
-
     line = f"## {name} [:notebook:]({f_project}) [:house:]({homepage})"
     output.append(line)
 
     for dataset in info["collection"]:
         name = dataset["name"]
-        f_spec = Path(dataset["SAS_import"]).stem + ".yaml"
+        f_spec = dataset["SAS_import"]
+        f_spec = f_spec if f_spec is not None else ""
+        f_spec = Path(f_spec).stem + ".yaml"
         f_spec = folder / "specification" / f_spec
 
         # Add a little check for the spec statements
         if f_spec.exists():
             line = f"+ [:notebook:]({f_spec}) {name}"
         else:
-            line = f"+ [:no_entry_sign:]() {name}"
+            line = f"+ :no_entry_sign: {name}"
 
         output.append(line)
 
@@ -39,13 +41,15 @@ section_start = None
 section_end = None
 
 for k, line in enumerate(lines):
-    if section_start and not section_end and line.startswith("# "):
+    if not section_end and line.startswith("# Credits"):
         section_end = k
-    if line.startswith("# Datasets"):
+    if not section_start and line.startswith("# Datasets"):
         section_start = k
 
 lines = lines[:section_start] + [output] + lines[section_end:]
 lines = "\n".join(lines)
-print(lines)
+
+# print(lines)
+
 with open("README.md", "w") as FOUT:
     FOUT.write(lines)
