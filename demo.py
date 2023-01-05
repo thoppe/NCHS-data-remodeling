@@ -95,8 +95,8 @@ class ProjectParser:
 
     def check_spec(self, spec):
         """
-        Checks the spec for anything amiss and warns the users.
-        Assigns ranges for downstream processing:
+        Checks the spec for anything amiss and records the change.
+        Also assigns ranges for downstream processing:
 
         49-50: 49 years
                49: 49 years
@@ -104,56 +104,78 @@ class ProjectParser:
 
         + Checks for any keys in the mapping are not integers
         + Checks that ranges mapped are <= 100
+
+        Returns an updated spec
         """
 
-        columns = spec["columns"]
+        # Assigns an empty emapping if it doesn't exist
+        for col, row in spec["columns"].items():
+            if "mapping" not in row:
+                row["mapping"] = {}
+
+        modifications = []
 
         # Assign any ranges to other mappings
-        large_range_keys = []
-
-        for col, row in columns.items():
-            if "mapping" not in row:
-                continue
+        for col, row in spec["columns"].items():
 
             # Create a copy since we are modifying it directly
             keys = list(row["mapping"].keys())
+            large_range_keys = []
+            bad_value_keys = []
+
             for k in keys:
+
+                if "-" not in k:
+                    try:
+                        int(k)
+                        assert int(k) == float(k)
+                    except:
+                        bad_value_keys.append(k)
+                        continue
+
                 if "-" in k:
                     val = row["mapping"][k]
 
                     try:
                         start_span, end_span = map(int, k.split("-"))
                     except:
-                        raise ValueError(f"Failed to map range {col}, {k}, {val}")
-
-                    if abs(end_span - start_span) > 100:
-                        large_range_keys.append(col)
+                        bad_value_keys.append(k)
                         continue
 
-                    # Remove the old key and map the new ones
+                    # If the span is too large skip this one mapping
+                    if abs(end_span - start_span) > 100:
+                        large_range_keys.append(k)
+                        continue
+
+                    # If everything passed, remove the old key and map the new ones
                     del row["mapping"][k]
                     for i in range(start_span, end_span + 1):
                         row["mapping"][str(i)] = val
 
-        if large_range_keys:
-            print(f"Skipping mapping for large ranges for {large_range_keys}")
-        for col in large_range_keys:
-            # Fix here
-            print(spec["columns"][col])
-            del spec["columns"][col]["mapping"]
+            for k in large_range_keys:
+                modifications.append(
+                    {
+                        "action": "skipped_mapping",
+                        "reason": "large_range",
+                        "column": col,
+                        "key": k,
+                        "value": row["mapping"][k],
+                    }
+                )
+                del row["mapping"][k]
 
-        for col, row in columns.items():
-            if "mapping" not in row:
-                continue
+            for k in bad_value_keys:
+                modifications.append(
+                    {
+                        "action": "skipped_mapping",
+                        "reason": "bad_key",
+                        "column": col,
+                        "key": k,
+                        "value": row["mapping"][k],
+                    }
+                )
 
-            for k, v in row["mapping"].items():
-                try:
-                    int(k)
-                    assert int(k) == float(k)
-                except:
-                    print(type(k), type(val), len(k), len(val))
-                    print(f"WARNING: Column {col} is not a int: {k} {v}")
-                    exit()
+        return spec, modifications
 
     def parse(self, info):
 
@@ -166,33 +188,24 @@ class ProjectParser:
         f_save0 = self.working_folder / "csv" / (f_SAS.stem + ".csv.bz2")
         f_save1 = self.working_folder / "csv_mapped" / (f_SAS.stem + ".csv.bz2")
 
-        if "ignore_mapping" not in info:
-            info["ignore_mapping"] = {}
-
         if not f_save0.exists() or not f_save1.exists():
             logging.info(f"Mapping columns in {f_save0.stem}")
             mkdir(f_save0)
             mkdir(f_save1)
             df, spec = self.convert(f_spec, f_data)
 
-            # Remove any mappings that should be ignored
-            for col, row in spec["columns"].items():
-                if "mapping" in row and col in info["ignore_mapping"]:
-                    spec["columns"][col]["mapping"] = {}
-
             # Run a sanity check on the columns
-            self.check_spec(spec)
+            spec, modifications = self.check_spec(spec)
+
+            # TO DO: Ultimately we should save and record this
+            # if modifications:
+            #    print(modifications)
 
             df.to_csv(f_save0, index=False, compression="bz2")
 
             # It is 50x faster to create a new dataframe vs work in place
             columns = spec["columns"]
-            data = []
-            for col, row in columns.items():
-                column = df[col].copy()
-                if "mapping" in row and col not in info["ignore_mapping"]:
-                    column = column.map(row["mapping"])
-                data.append(column)
+            data = [df[col].map(row["mapping"]) for col, row in columns.items()]
             df = pd.concat(data, axis=1, keys=columns.keys())
 
             logging.info(f"Saving {f_save1.stem} compressed")
