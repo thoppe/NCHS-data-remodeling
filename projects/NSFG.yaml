@@ -3,7 +3,6 @@ project_folder: NSFG
 homepage: https://www.cdc.gov/nchs/nsfg/index.htm
 
 base_url: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NSFG/
-maximum_mapping_span: 100
 
 collection:
   -
@@ -30,3 +29,15 @@ collection:
     name: 2015-2017 NSFG Male Response
     SAS_import: sas/2015_2017_MaleSetup.sas
     fixed_width_data: 2015_2017_MaleData.dat
+  -
+    name: 2013-2015 NSFG Female Response
+    SAS_import: sas/2013_2015_FemRespSetup.sas
+    fixed_width_data: 2013_2015_FemRespData.dat
+  -
+    name: 2013-2015 NSFG Female Pregnant Response
+    SAS_import: sas/2013_2015_FemPregSetup.sas
+    fixed_width_data: 2013_2015_FemPregData.dat
+  -
+    name: 2013-2015 NSFG Male Response
+    SAS_import: sas/2013_2015_MaleSetup.sas
+    fixed_width_data: 2013_2015_MaleData.dat

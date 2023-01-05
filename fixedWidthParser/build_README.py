@@ -14,7 +14,7 @@ for f_project in Path("projects/").glob("*.yaml"):
     line = "# Datasets"
     output.append(line)
 
-    line = f"## {name} [:house:]({homepage})"
+    line = f"## {name} [:notebook:]({f_project})) [:house:]({homepage})"
     output.append(line)
 
     for dataset in info["collection"]:
@@ -24,9 +24,9 @@ for f_project in Path("projects/").glob("*.yaml"):
 
         # Add a little check for the spec statements
         if f_spec.exists():
-            line = f"+ {name} [:notebook:]({f_spec})"
+            line = f"+ [:notebook:]({f_spec}) {name}"
         else:
-            line = f"+ {name} [:no_entry_sign:]()"
+            line = f"+ [:no_entry_sign:]() {name}"
 
         output.append(line)
 
