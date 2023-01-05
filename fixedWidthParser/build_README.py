@@ -14,7 +14,14 @@ for f_project in Path("projects/").glob("*.yaml"):
     homepage = info["homepage"]
     folder = Path("projects") / info["project_folder"]
 
-    line = f"## {name} [:notebook:]({f_project}) [:house:]({homepage})"
+    n0 = info["start_year"]
+    n1 = info["end_year"]
+
+    line = f"## {name} ({n0}-{n1}) [:notebook:]({f_project}) [:house:]({homepage})"
+    output.append(line)
+
+    desc = info["description"]
+    line = f"_{desc}_"
     output.append(line)
 
     for dataset in info["collection"]:

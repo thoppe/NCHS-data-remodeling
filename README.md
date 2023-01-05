@@ -29,9 +29,11 @@ Converting NCHS fixed-width datasets to CSV in a reproducible way.
 + Import from sas7bdat (NAMCS)
 
 # Datasets
-## National Health Care Surveys [:notebook:](projects/NAMCS.yaml) [:house:](https://www.cdc.gov/nchs/ahcd/index.htm)
+## National Health Care Surveys (1993-2019) [:notebook:](projects/NAMCS.yaml) [:house:](https://www.cdc.gov/nchs/ahcd/index.htm)
+_NHAMCS is designed to collect data on the utilization and provision of ambulatory care services in hospital emergency and outpatient departments and ambulatory surgery locations._
 + :no_entry_sign: NAMCS 2019
-## National Survey of Family Growth [:notebook:](projects/NSFG.yaml) [:house:](https://www.cdc.gov/nchs/nsfg/index.htm)
+## National Survey of Family Growth (1973-2019) [:notebook:](projects/NSFG.yaml) [:house:](https://www.cdc.gov/nchs/nsfg/index.htm)
+_The National Survey of Family Growth (NSFG) gathers information on family life, marriage and divorce, pregnancy, infertility, use of contraception, and men’s and women’s health._
 + [:notebook:](projects/NSFG/specification/2017_2019_FemRespSetup.yaml) 2017-2019 NSFG Female Response
 + [:notebook:](projects/NSFG/specification/2017_2019_FemPregSetup.yaml) 2017-2019 NSFG Female Pregnant Response
 + [:notebook:](projects/NSFG/specification/2017_2019_MaleSetup.yaml) 2017-2019 NSFG Male Response
