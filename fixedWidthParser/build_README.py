@@ -14,7 +14,7 @@ for f_project in Path("projects/").glob("*.yaml"):
     line = "# Datasets"
     output.append(line)
 
-    line = f"## {name} [:notebook:]({f_project})) [:house:]({homepage})"
+    line = f"## {name} [:notebook:]({f_project}) [:house:]({homepage})"
     output.append(line)
 
     for dataset in info["collection"]:

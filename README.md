@@ -27,7 +27,7 @@ Converting NCHS fixed-width datasets to CSV in a reproducible way.
 + Add in a description for each dataset.
 
 # Datasets
-## National Survey of Family Growth [:notebook:](projects/NSFG.yaml)) [:house:](https://www.cdc.gov/nchs/nsfg/index.htm)
+## National Survey of Family Growth [:notebook:](projects/NSFG.yaml) [:house:](https://www.cdc.gov/nchs/nsfg/index.htm)
 + [:notebook:](projects/NSFG/specification/2017_2019_FemRespSetup.yaml) 2017-2019 NSFG Female Response
 + [:notebook:](projects/NSFG/specification/2017_2019_FemPregSetup.yaml) 2017-2019 NSFG Female Pregnant Response
 + [:notebook:](projects/NSFG/specification/2017_2019_MaleSetup.yaml) 2017-2019 NSFG Male Response
