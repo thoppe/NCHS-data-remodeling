@@ -15087,8 +15087,6 @@ columns:
     mapping: &id108
       '1': Private health insurance plan (from employer or workplace; purchased directly;
         through a state or local government program or community program)
-      ? ''
-      : ''
       '2': 'Medicaid-additional name(s) for Medicaid in this state: [MEDICAID_FILL]'
       '3': Medicare
       '4': Medi-GAP

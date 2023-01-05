@@ -30,8 +30,8 @@ The dash instance is done inconsistently. Not sure how to handle ...
 + 2017-2019 NSFG Female Pregnant Response [:notebook:](projects/NSFG/specification/2017_2019_FemPregSetup.yaml)
 + 2017-2019 NSFG Male Response [:notebook:](projects/NSFG/specification/2017_2019_MaleSetup.yaml)
 + 2015-2017 NSFG Female Response [:notebook:](projects/NSFG/specification/2015_2017_FemRespSetup.yaml)
-+ 2015-2017 NSFG Female Pregnant Response [:no_entry_sign:]()
-+ 2015-2017 NSFG Male Response [:no_entry_sign:]()
++ 2015-2017 NSFG Female Pregnant Response [:notebook:](projects/NSFG/specification/2015_2017_FemPregSetup.yaml)
++ 2015-2017 NSFG Male Response [:notebook:](projects/NSFG/specification/2015_2017_MaleSetup.yaml)
 
 # Credits
 

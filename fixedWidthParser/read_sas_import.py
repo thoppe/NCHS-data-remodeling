@@ -166,6 +166,9 @@ def parse_PROC(section):
         info[variable_name] = {}
 
         for line in block[1].split("\n"):
+            if not line.strip():
+                continue
+
             key, val = extract_key_value_pair(line)
             info[variable_name][key] = val
 
