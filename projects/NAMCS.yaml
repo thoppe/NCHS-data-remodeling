@@ -4,6 +4,10 @@ homepage: https://www.cdc.gov/nchs/ahcd/index.htm
 
 base_url: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/
 
+description: NHAMCS is designed to collect data on the utilization and provision of ambulatory care services in hospital emergency and outpatient departments and ambulatory surgery locations. 
+start_year: 1993
+end_year: 2019
+
 collection:
   -
     name: NAMCS 2019

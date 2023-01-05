@@ -4,6 +4,10 @@ homepage: https://www.cdc.gov/nchs/nsfg/index.htm
 
 base_url: https://ftp.cdc.gov/pub/Health_Statistics/NCHS/Datasets/NSFG/
 
+description: The National Survey of Family Growth (NSFG) gathers information on family life, marriage and divorce, pregnancy, infertility, use of contraception, and men’s and women’s health. 
+start_year: 1973
+end_year: 2019
+
 collection:
   -
     name: 2017-2019 NSFG Female Response
